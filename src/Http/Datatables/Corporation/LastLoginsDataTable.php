@@ -42,6 +42,12 @@ class LastLoginsDataTable extends DataTable
             })
             ->editColumn('last_login', function ($row) {
                 return human_diff($row->last_login);
+            })->filterColumn('character.name', function($query, $keyword){
+
+                $query->whereHas('character', function($query) use ($keyword){
+                    $query->where('name', 'like', "%{$keyword}%");
+                });
+
             })
             ->rawColumns(['token_status'])
             ->make(true);
@@ -89,11 +95,11 @@ class LastLoginsDataTable extends DataTable
     public function getColumns()
     {
         return [
-            ['data' => 'token_status', 'title' => 'Tokens', 'sortable'=>false],
+            ['data' => 'token_status', 'title' => 'Tokens', 'sortable'=>false, 'searchable'=>false],
             ['data' => 'main_character.name', 'title' => trans('web::seat.main_character')],
-            ['data' => 'last_character_login_name', 'title' => trans('web::seat.character_name'), 'sortable' => false],
-            ['data' => 'last_character_login', 'title' => trans('web::seat.last_login').' ( EVE )'],
-            ['data' => 'last_login', 'title' => trans('web::seat.last_login').' ( SeAT )']
+            ['data' => 'last_character_login_name', 'title' => trans('web::seat.character_name'), 'sortable' => false,'searchable'=>false],
+            ['data' => 'last_character_login', 'title' => trans('web::seat.last_login').' ( EVE )', 'searchable'=>false],
+            ['data' => 'last_login', 'title' => trans('web::seat.last_login').' ( SeAT )', 'searchable'=>false]
         ];
     }
 
