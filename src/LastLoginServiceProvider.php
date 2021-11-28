@@ -23,17 +23,17 @@ class LastLoginServiceProvider extends AbstractSeatPlugin
 
     public function getName(): string
     {
-        return 'Last Login';
+        return 'User Last Login';
     }
 
     public function getPackageRepositoryUrl(): string
     {
-        return '';
+        return 'https://github.com/SimplyUnnamed/seat-user-last-logins/';
     }
 
     public function getPackagistPackageName(): string
     {
-        return 'userlastlogin';
+        return 'seat-user-last-login';
     }
 
     public function getPackagistVendorName(): string

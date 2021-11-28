@@ -1,4 +1,4 @@
-@extends('web::corporation.layouts.view', ['viewname'=>'userlastlogin', 'breadcrumb' => 'Last Login'])
+@extends('web::corporation.layouts.view', ['viewname'=>'last-login', 'breadcrumb' => 'Last Login'])
 
 @section('page_header', trans_choice('web::seat.corporation', 1).' '.trans('web::seat.last_login'))
 
