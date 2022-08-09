@@ -48,8 +48,13 @@ class CorporationScope implements DataTableScope
                 return $permission->title == $this->ability;
             });
 
-        if($permissions->filter(fn ($permissions) => ! $permissions->hasFilters() )->isNotEmpty())
+        if($permissions->filter(function($permissions){
+            return !$permissions->hasFilters();
+        })->isNotEmpty())
             return $query;
+
+        /*if($permissions->filter(fn ($permissions) => ! $permissions->hasFilters() )->isNotEmpty())
+            return $query;*/
 
         $map = $permissions->map(function($permission){
             $filters = json_decode($permission->pivot->filters);
