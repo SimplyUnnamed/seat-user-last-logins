@@ -11,7 +11,7 @@
         }
     ],
     "require": {
-        "eveseat/web": "^4.0"
+        "eveseat/web": "^5.0"
     },
     "autoload": {
         "psr-4": {
