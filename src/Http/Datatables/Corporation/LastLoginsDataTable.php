@@ -9,12 +9,13 @@ use Illuminate\Support\Facades\DB;
 use Seat\Eveapi\Models\RefreshToken;
 use Seat\Web\Models\User;
 use Yajra\DataTables\Services\DataTable;
+use Illuminate\Http\JsonResponse;
 
 class LastLoginsDataTable extends DataTable
 {
 
 
-    public function ajax()
+    public function ajax(): JsonResponse
     {
         return datatables()
             ->eloquent($this->applyScopes($this->query()))
